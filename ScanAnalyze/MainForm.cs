@@ -35,7 +35,16 @@ namespace ScanAnalyze
 
             cbbLevel.SelectedIndex = getLevel(localIP);
 
-            tbName.Text = regUtil.ReadLastUserName();
+            var reg_username= regUtil.ReadLastUserName();
+
+            if (!String.IsNullOrEmpty(reg_username))
+            {
+                tbName.Text = reg_username;
+            }
+            else
+            {
+                tbName.Text = Environment.UserName;
+            }
 
             tsslIP.Text = $"本机IP地址:{localIP}";
         }
